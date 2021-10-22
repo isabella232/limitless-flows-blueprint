@@ -1,0 +1,54 @@
+{
+  "name": "Limitless - Return from SmartCrowd v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://${input.stage}.api.belimitless-app.io/crm/integration/messages/return?tenantMsgId=${input.msgId}",
+      "requestType": "PUT",
+      "headers": {
+        "x-api-key": "${input.apikey}",
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Message",
+        "type": "object",
+        "required": [
+          "apikey",
+          "stage"
+        ],
+        "properties": {
+          "msgId": {
+            "type": "string"
+          },
+          "apikey": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Response",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

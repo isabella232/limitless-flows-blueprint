@@ -1,0 +1,121 @@
+{
+  "name": "Limitless - Get Full Event from SmartCrowd v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://${input.stage}.api.belimitless-app.io/crm/integration/messages/events/${input.conversationId}",
+      "requestType": "GET",
+      "headers": {
+        "x-api-key": "${input.apikey}"
+      },
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "lifecycleState": "$.lifecycleState",
+        "msgState": "$.msgState",
+        "message": "$.msgDialogue[-1].body",
+        "escalate": "$.escalateState",
+        "responseCode": "$.responseCode",
+        "custRating": "$.msgDialogue[-1].custRating",
+        "answerCount": "$.msgDialogue[-1].answerCount",
+        "custRespUiURL": "$.custRespUiURL",
+        "authorName": "$.msgDialogue[-1].authorName",
+        "timeoutState": "$.timeoutState",
+        "custTestimonial": "$.custTestimonial",
+        "updateType": "$.updateType",
+        "escalateReason": "$.escalateReasonDesc"
+      },
+      "translationMapDefaults": {
+        "lifecycleState": "\"\"",
+        "msgState": "\"\"",
+        "message": "\"\"",
+        "escalate": "false",
+        "responseCode": "\"\"",
+        "custRating": "100",
+        "answerCount": "404",
+        "custRespUiURL": "\"\"",
+        "authorName": "\"\"",
+        "timeoutState": "false",
+        "custTestimonial": "\"\"",
+        "updateType": "\"\"",
+        "escalateReason": "\"\""
+      },
+      "successTemplate": "{\"escalate\":${escalate},\"escalateReason\":${escalateReason},\"responseCode\":${responseCode},\"message\":${message},\"authorName\":${authorName},\"custRating\":${custRating},\"answerCount\":${answerCount},\"custRespUiURL\":${custRespUiURL},\"custTestimonial\":${custTestimonial},\"msgState\":${msgState},\"lifecycleState\":${lifecycleState},\"updateType\":${updateType},\"timeoutState\":${timeoutState}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "required": [
+          "apikey",
+          "stage"
+        ],
+        "properties": {
+          "conversationId": {
+            "type": "string"
+          },
+          "apikey": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "output",
+        "type": "object",
+        "properties": {
+          "escalate": {
+            "type": "boolean"
+          },
+          "escalateReason": {
+            "type": "string"
+          },
+          "responseCode": {
+            "type": "string"
+          },
+          "timeoutState": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "msgState": {
+            "type": "string"
+          },
+          "updateType": {
+            "type": "string"
+          },
+          "lifecycleState": {
+            "type": "string"
+          },
+          "authorName": {
+            "type": "string"
+          },
+          "custRating": {
+            "type": "integer"
+          },
+          "answerCount": {
+            "type": "integer"
+          },
+          "custRespUiURL": {
+            "type": "string"
+          },
+          "custTestimonial": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

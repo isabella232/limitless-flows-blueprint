@@ -1,0 +1,51 @@
+{
+  "name": "Limitless - Get Last N Message Ids from Genesys v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/messages/${input.conversationId}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "messageId": "$.participants[?(@.state=='connected' && @.purpose=='customer')].messages[-1000:].messageId"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"messageIds\": ${messageId}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Output",
+        "type": "object",
+        "properties": {
+          "messageIds": {
+            "type": "array",
+            "items": {
+              "title": "messageId",
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

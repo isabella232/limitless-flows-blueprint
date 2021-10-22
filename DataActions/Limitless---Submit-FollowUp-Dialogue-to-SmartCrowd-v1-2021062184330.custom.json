@@ -1,0 +1,66 @@
+{
+  "name": "Limitless - Submit FollowUp Dialogue to SmartCrowd v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://${input.stage}.api.belimitless-app.io/crm/public/messages/${input.msgId}/reply?access_key=${input.accessKey}",
+      "requestType": "POST",
+      "headers": {
+        "x-api-key": "${input.apikey}",
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "{\"body\": \"$esc.jsonString(${input.body})\"}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Message",
+        "type": "object",
+        "required": [
+          "msgId",
+          "body",
+          "apikey",
+          "stage"
+        ],
+        "properties": {
+          "msgId": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "accessKey": {
+            "type": "string"
+          },
+          "apikey": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Response",
+        "type": "object",
+        "properties": {
+          "messageId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

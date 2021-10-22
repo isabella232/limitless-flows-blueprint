@@ -1,0 +1,52 @@
+{
+  "name": "Limitless - Shorten Link v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://api-ssl.bitly.com/v4/shorten",
+      "requestType": "POST",
+      "headers": {
+        "Authorization": "Bearer <YOUR TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "{\"long_url\": \"${input.LongLink}\"}"
+    },
+    "response": {
+      "translationMap": {
+        "shortlink": "$.link"
+      },
+      "translationMapDefaults": {
+        "shortlink": "\"\""
+      },
+      "successTemplate": "{\"ShortLink\":${shortlink}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "properties": {
+          "LongLink": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Output",
+        "type": "object",
+        "properties": {
+          "ShortLink": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

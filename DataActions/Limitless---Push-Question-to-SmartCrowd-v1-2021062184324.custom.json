@@ -1,0 +1,120 @@
+{
+  "name": "Limitless - Push Question to SmartCrowd v1 - Exported 2021-06-21 @ 8:43",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://${input.stage}.api.belimitless-app.io/crm/integration/messages",
+      "requestType": "POST",
+      "headers": {
+        "x-api-key": "${input.apikey}"
+      },
+      "requestTemplate": "[{\n\"groupName\": \"$esc.jsonString(${input.groupName})\",\n\"body\": \"$esc.jsonString(${input.body})\",\n\"customerFirstName\": \"$esc.jsonString(${input.customerFirstName})\",\n\"customerLastNameInitial\": \"$esc.jsonString(${input.customerLastNameInitial})\",\n\"tenantMsgId\": \"$esc.jsonString(${input.tenantMsgId})\",\n\"tenantMsgType\": \"$esc.jsonString(${input.tenantMsgType})\",\n\"tenantMsgDate\": \"$esc.jsonString(${input.tenantMsgDate})\",\n    \"tenantChannel\": \"$esc.jsonString(${input.tenantChannel})\"\n}]"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Message",
+        "type": "object",
+        "required": [
+          "groupName",
+          "tenantMsgId",
+          "customerFirstName",
+          "customerLastNameInitial",
+          "body",
+          "tenantMsgType",
+          "tenantMsgDate",
+          "tenantChannel",
+          "apikey",
+          "stage"
+        ],
+        "properties": {
+          "groupName": {
+            "type": "string"
+          },
+          "tenantMsgId": {
+            "type": "string"
+          },
+          "customerFirstName": {
+            "type": "string"
+          },
+          "customerLastNameInitial": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "tenantMsgType": {
+            "type": "string"
+          },
+          "tenantMsgDate": {
+            "type": "string"
+          },
+          "tenantChannel": {
+            "type": "string"
+          },
+          "apikey": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Response",
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "success": {
+            "type": "integer"
+          },
+          "failed": {
+            "type": "integer"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "title": "Item 1",
+              "type": "object",
+              "properties": {
+                "msgId": {
+                  "type": "string"
+                },
+                "tenantMsgId": {
+                  "type": "string"
+                },
+                "timeoutDate": {
+                  "type": "string"
+                },
+                "processCode": {
+                  "type": "string"
+                },
+                "customerEmailHash": {
+                  "type": "string"
+                },
+                "accessKey": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

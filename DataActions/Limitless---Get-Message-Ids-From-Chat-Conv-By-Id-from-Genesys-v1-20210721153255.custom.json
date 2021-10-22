@@ -1,0 +1,73 @@
+{
+  "name": "Limitless - Get Message Ids From Chat Conv By Id from Genesys v1 - Exported 2021-07-21 @ 15:32",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/chats/${input.conversationId}/messages?sortOrder=${input.sortOrder}",
+      "requestType": "GET",
+      "headers": {
+        "UserAgent": "PureCloudIntegrations/1.0",
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "messages": "$.entities[?(@.bodyType != 'member-join' && @.bodyType != 'member-leave' && @.bodyType != 'notice')].id",
+        "senders": "$.entities[?(@.bodyType != 'member-join' && @.bodyType != 'member-leave' && @.bodyType != 'notice')].sender.id",
+        "bodies": "$.entities[?(@.bodyType != 'member-join' && @.bodyType != 'member-leave' && @.bodyType != 'notice')].body"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"messageArray\": ${messages},\"senderArray\": ${senders},\"bodyArray\": ${bodies}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Output",
+        "type": "object",
+        "properties": {
+          "messageArray": {
+            "type": "array",
+            "items": {
+              "title": "messageId",
+              "type": "string"
+            }
+          },
+          "senderArray": {
+            "type": "array",
+            "items": {
+              "title": "senderId",
+              "type": "string"
+            }
+          },
+          "bodyArray": {
+            "type": "array",
+            "items": {
+              "title": "body",
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

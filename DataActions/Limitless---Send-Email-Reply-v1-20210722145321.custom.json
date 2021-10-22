@@ -1,0 +1,57 @@
+{
+  "name": "Limitless - Send Email Reply v1 - Exported 2021-07-22 @ 14:53",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "[YOUR SMTP SERVER]",
+      "requestType": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "{\n  \"serverId\": \"32298\",\n  \"APIKey\": \"[YOUR API KEY]\",\n  \"Messages\": [\n    {\n      \"To\": [\n        {\n          \"emailAddress\": \"$esc.jsonString(${input.ToAddress})\"\n        }\n      ],\n      \"From\": {\n        \"emailAddress\": \"$esc.jsonString(${input.FromAddress})\",\n        \"friendlyName\": \"$esc.jsonString(${input.FromName})\"\n      },\n      \"ReplyTo\": {\n        \"emailAddress\": \"$esc.jsonString(${input.FromAddress})\",\n        \"friendlyName\": \"$esc.jsonString(${input.FromName})\"\n      },\n      \"Subject\": \"$esc.jsonString(${input.Subject})\",\n      \"HtmlBody\": \"$esc.jsonString(${input.Body})\"\n    }\n  ]\n}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "message",
+        "type": "object",
+        "properties": {
+          "Subject": {
+            "type": "string"
+          },
+          "Body": {
+            "type": "string"
+          },
+          "ToAddress": {
+            "type": "string"
+          },
+          "ToName": {
+            "type": "string"
+          },
+          "FromAddress": {
+            "type": "string"
+          },
+          "FromName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

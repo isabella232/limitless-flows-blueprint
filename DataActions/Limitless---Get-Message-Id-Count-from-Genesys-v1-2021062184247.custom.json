@@ -1,0 +1,47 @@
+{
+  "name": "Limitless - Get Message Id Count from Genesys v1 - Exported 2021-06-21 @ 8:42",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/messages/${input.conversationId}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "counts": "$.participants[?(@.state=='connected' && @.purpose=='customer')].messages.length()"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"count\":${successTemplateUtils.firstFromArray(\"${counts}\")}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Output",
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

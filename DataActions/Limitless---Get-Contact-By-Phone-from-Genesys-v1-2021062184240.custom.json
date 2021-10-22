@@ -1,0 +1,54 @@
+{
+  "name": "Limitless - Get Contact By Phone from Genesys v1 - Exported 2021-06-21 @ 8:42",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/externalcontacts/contacts?q=${input.phone}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "firstName": "$.entities[0].firstName",
+        "lastName": "$.entities[0].lastName"
+      },
+      "translationMapDefaults": {
+        "firstName": "\"Bruce\"",
+        "lastName": "\"Banner\""
+      },
+      "successTemplate": "{\"FirstName\":${firstName},\"LastName\":${lastName}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "Input",
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "Output",
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
