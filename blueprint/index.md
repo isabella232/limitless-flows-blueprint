@@ -1,5 +1,5 @@
-## **Deploying a support platform that delivers exceptional customer experience**
-The Genesys Cloud Developer Blueprint provides a simple example of deploying Limitless GigCX on Genesys Cloud to manage and deliver expert customer support.
+## **Implementing a support platform that delivers exceptional customer experience**
+The Genesys Cloud Developer Blueprint provides a simple example of implementing Limitless GigCX on Genesys Cloud to manage and deliver expert customer support.
 
 This blueprint demonstrates how to:
 
