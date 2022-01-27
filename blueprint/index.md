@@ -9,10 +9,10 @@ This blueprint demonstrates how to:
 - Connect Limitless to your email channels
 - Additional Considerations
 
-## **Limitless GigCX**
-Via Limitless GigCX your organization can quickly build a qualified crowd of expert product users to resolve customer support tickets. Experts are available 24/7, in any language, to deliver amazing support at a significantly lower cost to serve. You can find out more about Limitless and GigCX at: <https://www.limitlesstech.com/>
+## **Solution components**
+**Limitless GigCX** - A product your organization can quickly build a qualified crowd of expert users to resolve customer support tickets. Experts are available 24/7, in any language, to deliver amazing support at a significantly lower cost to serve. You can find out more about Limitless and GigCX at: <https://www.limitlesstech.com/>
 
-This blueprint brings the power of Limitless and GigCX to Genesys Cloud architect flows. Using these flows, open messaging, chat, and email channels in Genesys Cloud can be connected to Limitless APIs to bring GigCX Experts into the conversation via the SmartCrowd platform. 
+**Archtect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. Limitless and GigCX brings the power to Genesys Cloud using these flows. Open messaging, chat, and email channels in Genesys Cloud can be connected to Limitless APIs to bring GigCX Experts into the conversation via the SmartCrowd platform. 
 
 The flow performs the following functions:
 
