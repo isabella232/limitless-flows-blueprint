@@ -14,15 +14,16 @@ This blueprint demonstrates how to:
 
 **Archtect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. Limitless and GigCX brings the power to Genesys Cloud using these flows. Open messaging, chat, and email channels in Genesys Cloud can be connected to Limitless APIs to bring GigCX Experts into the conversation via the SmartCrowd platform. 
 
-The flow performs the following functions:
+## **Prerequisites**
+**Specialized knowledge**
 
-- Routing of conversations to Expert Crowd
+- Conversation routed to crowds of experts
 - Integration between Genesys Cloud and the Limitless SmartCrowd platform
 - Facilitating the conversation between customer and GigCX Expert
 - Manages the lifecycle/status events coming from the SmartCrowd platform and routes accordingly within Genesys
 - Brings a Genesys Agent into the conversation if the Expert Crowd is unable to help the customer
 
-A high-level representation of the implementation can be seen in the diagram.
+The following diagram shows a high-level representation of the implementation.
 
 ![](images/001.png) 
 
