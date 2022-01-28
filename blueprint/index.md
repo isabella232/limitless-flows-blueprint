@@ -52,7 +52,7 @@ Now we import each of the twelve Data Actions. You can learn how to import Data 
 
 Each data action connects to an API - some are Genesys Cloud APIs, and some are Limitless Web Services, as shown in the table below. You can read more about Genesys APIs here: <https://developer.genesys.cloud/api/>
 
-The Data Actions to import are as follows:
+The following are data actions to import:
 
 |**Data Action Name**|**Integration**|**Genesys API**|**Used In**|**Purpose**|
 | :-: | :-: | :-: | :-: | :-: |
@@ -74,13 +74,13 @@ After importing all the data actions, you will need to publish them to be used i
 
 An Architect Flow is needed to send a customer question (from an incoming message) to Limitless. This blueprint contains the following flows:
 
-- **Open messaging** - to connect Limitless to your open messaging channels
+- **Open messaging** - Connect Limitless to your open messaging channels
 - **Chat** - Connect Limitless to your web chat channels (note: This flow is compatible with web chat v1.1 & web chat v2)
 - **Email** - Connect Limitless to your email channels 
 
 You can import these flows from the "Architect Flows" GUI. Learn more about importing Architect Flows here: <https://help.mypurecloud.com/articles/import-export-call-flow/>
 ### **Flow Variables**
-For all flows you will need to set the following Flow Variables. You can set these in the ***Resources>Data*** area of each flow. 
+For all flows, you will need to set the following Flow Variables. You can set these in the ***Resources>Data*** area of each flow. 
 
 ![](images/003.png) 
 
