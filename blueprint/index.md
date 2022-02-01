@@ -1,3 +1,6 @@
+## **Content**
+[toc]
+
 ## **Implementing a support platform that delivers exceptional customer experience**
 The Genesys Cloud Developer Blueprint provides a simple example of implementing Limitless GigCX on Genesys Cloud to manage and deliver expert customer support.
 
@@ -7,14 +10,11 @@ This blueprint demonstrates how to:
 - Open messaging
 - Chat (This flow is compatible with web chat v1.1 & web chat v2)
 - Connect Limitless to your email channels
-- Additional Considerations
 
 ## **Solution components**
 **Limitless GigCX** - A product your organization can quickly build a qualified crowd of expert users to resolve customer support tickets. Experts are available 24/7, in any language, to deliver amazing support at a significantly lower cost to serve. You can find out more about Limitless and GigCX at: <https://www.limitlesstech.com/>
 
-**Archtect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. 
-
-Limitless and GigCX brings the power to Genesys Cloud using these flows. Open messaging, chat, and email channels in Genesys Cloud can be connected to Limitless APIs to bring GigCX Experts into the conversation via the SmartCrowd platform. 
+**Architect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. 
 
 ## **Prerequisites**
 **Specialized knowledge**
@@ -35,7 +35,7 @@ You can learn more about Limitless and Genesys at: <https://www.limitlesstech.co
 
 ## **Connecting to Limitless SmartCrowd**
 
-The first step. Without connectivity to Limitless SmartCrowd, you cannot bring Experts into the conversation. The Expert Crowd uses the SmartCrowd platform to receive conversations and respond to them. Experts can do this via Web or Mobile App, and they receive rewards on a per task basis. Limitless operates a fully managed service for the Expert Crowd, so that all required is a Limitless Client to connect to the platform and route tasks. This blueprint shows you how to achieve that for Genesys Cloud.
+Without connectivity to Limitless SmartCrowd, you cannot bring Experts into the conversation. The Expert Crowd uses the SmartCrowd platform to receive conversations and respond to them. Experts can do this via Web or Mobile App, and they receive rewards on a per task basis. Limitless operates a fully managed service for the Expert Crowd, so that all required is a Limitless Client to connect to the platform and route tasks. This blueprint shows you how to achieve that for Genesys Cloud.
 
 Steps to connectivity:
 
@@ -121,7 +121,7 @@ The first step in our "Limitless Expert" flow is a Call Data Action using the �
 
 ![](images/005.png) 
 
-This block uses the customer’s phone number to retrieve the first N]name and first initial of their last name to include in the post of the question to Limitless. The customer's first name and first Initial of their last name are shared and can be seen by the Expert Crowd to aid the personalization of the Expert response. In your contact center, you may be using a Customer Relationship Management (CRM) solution, and you can replace this Data Action with a call to your CRM to retrieve the required customer information. 
+This block uses the customer’s phone number to retrieve the first name and first initial of their last name to include in the post of the question to Limitless. The customer's first name and first Initial of their last name are shared and can be seen by the Expert Crowd to aid the personalization of the Expert response. In your contact center, you may be using a Customer Relationship Management (CRM) solution, and you can replace this Data Action with a call to your CRM to retrieve the required customer information. 
 
 ***An important note here on ‘Transfer to ACD’ blocks in the flow*** - You can see exception handling throughout the flow sends the conversation to an ‘Escalated’ queue via a ‘Transfer to ACD’ block. This ‘Escalated’ queue should be replaced with the Agent queue you want conversations to go to if the ‘Limitless Expert' state hits a problem or if the Expert Crowd cannot help the customer.
 
@@ -306,9 +306,12 @@ This part of the Loop monitors a Limitless Event queue for Expert dialogues and 
   - ***‘Resolved’*** - The Limitless lifecycle was completed, and the question resolved. This is an end state, and the flow disconnects.
 
 ![](images/030.png)
-## **Cloud analytics & reporting**
-The use of the Limitless flows has no impact on Cloud Analytics or Genesys reporting.
+
+:::primary
+**Note**: The use of the Limitless flows has no impact on Cloud Analytics or Genesys reporting.
+:::
 
 ## **Other considerations**
 - ***Flow Outcomes*** - The blueprint does not contain Flow Outcomes to avoid validation errors on import. You should consider what Flow Outcomes you want and introduce these to Flow.
 
+## **Additional resources**
