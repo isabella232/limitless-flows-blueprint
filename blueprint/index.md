@@ -82,8 +82,8 @@ An Architect Flow is needed to send a customer question (from an incoming messag
 
 You can import these flows from the "Architect Flows" GUI. For more information see, [Import or export a flow](https://help.mypurecloud.com/?p=2730 "Goes to the the Import or export a flow article") in the Genesys Cloud Resource Center.
 
-### **Flow Variables**
-For all flows, you will need to set the following Flow Variables. You can set these in the ***Resources>Data*** area of each flow. 
+### **Flow variables**
+For all flows, you will need to set the following flow variables. You can set these in the ***Resources>Data*** area of each flow. 
 
 ![Set flow variables](images/003.png "Set flow variables") 
 
@@ -118,7 +118,7 @@ This state contains:
 
 #### **Limitless expert state**
 This state contains the connectivity and conversation lifecycle management when the conversation is handled by Expert Crowd via the SmartCrowd platform.
-##### **Look up the customer:**
+##### **Look up the customer**
 The first step in our "Limitless Expert" flow is a Call Data Action using the ‘Get Contact By Phone' action.
 
 ![Call data action](images/005.png "Call data action") 
@@ -129,12 +129,12 @@ This block uses the customer’s phone number to retrieve the first name and fir
 
 ![Transfer to ACD](images/006.png "Transfer to ACD") 
 
-##### **Submit the question to Limitless:**
+##### **Submit the question to Limitless**
 We have another Call Data Action using the ‘Limitless Push Question’ action. This submits the customer’s question to the Limitless SmartCrowd platform, and it becomes visible to Experts in the GigCX Crowd. In the integration, the Genesys Conversation ID and Limitless Message ID are exchanged.
 
 ![Call data action using the Limitless push question](images/007.png "Call data action using the Limitless push question") 
 
-##### **Enter the loop:**
+##### **Enter the loop**
 After successfully submitting the customer question to Limitless, the ‘Limitless Expert’ flow prepares to enter a loop. The Loop itself performs two functions:
 
 1. Monitor the customer side of the conversation - detecting and submitting additional customer dialogues to Limitless.
@@ -207,12 +207,12 @@ Once this has been established, then the customers chat is routed to Limitless v
 
 #### **Limitless expert state**
 This state contains the connectivity and conversation lifecycle management when the conversation is handled by Expert Crowd via the SmartCrowd platform.
-#### **Submit the question to Limitless:**
+#### **Submit the question to Limitless**
 First, we have a Call Data Action using the ‘Limitless Push Question’ action. This submits the customer’s question to the Limitless SmartCrowd platform, and it becomes visible to Experts in the GigCX Crowd. The Genesys Conversation ID and Limitless Message ID are exchanged in the integration.
 
 ![Exchange of conversation ID and Limitless message ID](images/017.png "Exchange of conversation ID and Limitless message ID") 
 
-#### **Enter The loop:**
+#### **Enter The loop**
 After successfully submitting the customer question to Limitless the ‘Limitless Expert’ flow prepares to enter a loop. The Loop itself performs two functions:
 
 1. Monitor the customer side of the conversation - detecting and submitting additional customer dialogues to Limitless.
@@ -286,7 +286,7 @@ This state contains:
 
 #### **Limitless expert state**
 This state contains the connectivity and conversation lifecycle management when the conversation is handled by Expert Crowd via the SmartCrowd platform.
-#### **Enter The loop:**
+#### **Enter The loop**
 After successfully submitting the customer question to Limitless, the ‘Limitless Expert’ flow prepares to enter a loop. The Loop performs one function, to monitor the Limitless side of the conversation - detecting and displaying Expert dialogues to the customer and monitoring the Lifecycle state of the Limitless message within the SmartCrowd platform and taking appropriate action based on these statuses.
 
 ![Limitless expert flow](images/027.png "Limitless expert flow") 
@@ -326,3 +326,5 @@ This part of the Loop monitors a Limitless Event queue for Expert dialogues and 
 - ***Flow Outcomes*** - The blueprint does not contain Flow Outcomes to avoid validation errors on import. You should consider what Flow Outcomes you want and introduce these to Flow.
 
 ## **Additional resources**
+- [https://developer.genesys.cloud/api/](https://developer.genesys.cloud/api/ "Goes to the APIs page") in the Genesys Cloud Developer Center
+- [https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint "Goes to the Limitless blueprint repository") in Github
