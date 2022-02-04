@@ -15,7 +15,7 @@ This blueprint demonstrates how to:
 
 ## Solution components
 
-**Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The xxpert is available 24/7, in any language, to deliver amazing support at a significantly lower cost to serve. You can find out more about Limitless GigCX at: <https://www.limitlesstech.com/>
+**Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The expert is available 24/7, in any language, to deliver amazing support at a significantly lower cost to serve. You can find out more about Limitless GigCX at: <https://www.limitlesstech.com/>
 
 **Architect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. 
 
@@ -37,7 +37,7 @@ You can learn more about Limitless GigCX and Genesys at: [https://www.limitlesst
 
 ## Connecting to Limitless GigCX SmartCrowd
 
-Without connectivity to Limitless GigCX SmartCrowd, you cannot bring Experts into the conversation. The expert crowd uses the SmartCrowd platform to receive conversations and respond to them. The expert can do this via Web or Mobile App, and they receive rewards on a per task basis. Limitless GigCX operates a fully managed service for the expert crowd, so that all required is a Limitless GigCX client to connect to the platform and route tasks. This blueprint shows you how to achieve that for Genesys Cloud.
+Without connectivity to Limitless GigCX SmartCrowd, you cannot bring Experts into the conversation. The expert crowd uses the SmartCrowd platform to receive conversations and respond to them. The expert can do this via Web or Mobile App, and they receive rewards on a per task basis. Limitless GigCX operates a fully managed service for the expert crowd, so a Limitless GigCX client is required to connect to the platform and route tasks. This blueprint shows you how to achieve that for Genesys Cloud.
 
 Steps to connectivity:
 
@@ -95,16 +95,16 @@ For more information see, [Manage a variable](https://help.mypurecloud.com/?p=10
 |**Variable**|**Set to**|
 | :-: | :-: |
 |Flow.apikey|Your API key supplied by Limitless|
-|Flow.stage|The target Limitless environment being used by this flow. This value will be supplied by Limitless|
+|Flow.stage|The target Limitless environment is being used by this flow. This value will be supplied by Limitless|
 |Flow.EnterpriseName|Set this to the name of your Enterprise. This value will appear in some of the Send Response blocks within the flow.|
 |Flow.GroupName|Set this to the Group Name value that Limitless provided to you|
 |Flow.LoopMax|Set to the maximum number of loops you want the Flow to go through (See ‘Enter The Loop’ section). The default value is 90 and will see you through most implementations - consider changing this in only consultation with the Limitless team.|
-|Flow.WaitSeconds|Set to the wait time for the Loop that you require (See ‘Enter The Loop’ section). The default value is 8 seconds and will see you through most implementations - consider changing this in only consultation with the Limitless team.|
+|Flow.WaitSeconds| Set the wait time for the Loop you require (See ‘Enter The Loop’ section). The default value is 8 seconds and will see you through most implementations - consider changing this in only consultation with the Limitless team.|
 
 ### Flow states
 Each flow has two states:
 
-- **Starting state** - The Starting State represents a very simple flow that engages Limitless GigCX by calling the Limitless GigCX expert state. Other than demos, you probably won’t use this Starting State as you will have your own flows that you wish to extend to the expert crowd.
+- **Starting state** - The Starting State represents a simple flow that engages Limitless GigCX by calling the Limitless GigCX expert state. Other than demos, you probably won’t use this Starting State as you will have your own flows that you wish to extend to the expert crowd.
 - **Limitless Expert** - This state contains the connectivity and conversation lifecycle management when the conversation is handled by expert Crowd via the SmartCrowd platform. The logic contained in this state is described in more detail below, but you should only make changes here in consultation with the Limitless GigCX team. This state has been designed to drop it into your existing Genesys flows and bring the expert crowd into conversations where you wish.
 
 ### **The open messaging flow**
