@@ -25,7 +25,8 @@ This blueprint demonstrates how to:
 - Compatible with web chat v1.1 & web chat v2
 - Experience with Limitless GigCX
 - Experience designing Architect flows
-
+- Experience importing and/or designing Genesys Cloud Data Actions
+- Experience configuring and installing Genesys Cloud web chat v1.1 or Genesys Cloud v2
 
 The following diagram shows a high-level representation of the implementation.
 
@@ -77,7 +78,7 @@ After importing all the data actions, you must publish them to be used in our Ar
 
 ## The architect flows
 
-An Architect Flow is required to send a customer question (from an incoming message) to Limitless GigCX. This blueprint contains the following flows:
+A Genesys Cloud Architect flow is required to send a customer question (from an incoming message) to Limitless GigCX. This blueprint contains the following flows:
 
 - **Open messaging** - Connect Limitless GigCX to your open messaging channels
 - **Chat** - Connect Limitless  GigCX to your web chat channels (**Note**: This flow is compatible with web chat v1.1 & web chat v2)
@@ -108,7 +109,7 @@ Each flow has two states:
 - **Limitless Expert** - This state contains the connectivity and conversation lifecycle management when the conversation is handled by expert crowd via the SmartCrowd platform. The logic contained in this state is described below, but only make changes in consultation with the Limitless GigCX team. This state is designed to drop the conversation into an existing Genesys flows and bring the expert crowd into the conversations.
 
 ### **The open messaging flow**
-The oepn messaging flow connects Limitless GigCX to your open messaging channels.
+The open messaging flow connects Limitless GigCX to your open messaging channels.
 
 #### Starting state
 This state contains:
@@ -334,7 +335,7 @@ Monitoring Limitless observes the Limitless GigCX event queue for expert dialogu
 ![Limitless SmartCrowd status change event](images/030.png "Limitless SmartCrowd status change event")
 
 :::primary
-**Note**: The use of the Limitless GigCX flows has no impact on Cloud Analytics or reporting.
+: The use of the Limitless GigCX flows has no impact on Cloud Analytics or reporting.
 :::
 
 ## Other considerations
