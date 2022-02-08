@@ -37,7 +37,6 @@ You can learn more about Limitless GigCX and Genesys at: [https://www.limitlesst
 # Implementation steps
 
 ## Connecting to Limitless GigCX SmartCrowd
-
 Without connectivity to Limitless GigCX SmartCrowd, you cannot bring Experts into the conversation. The expert crowd uses the SmartCrowd platform to receive conversations and respond to them. The expert can do this process via Web or Mobile App, and they receive rewards on a per task basis. Limitless GigCX operates a fully managed service for the expert crowd, so a Limitless GigCX client is required to connect to the platform and route tasks. This blueprint shows you how to achieve that for Genesys Cloud.
 
 Steps to connectivity:
@@ -77,7 +76,6 @@ The following are data actions to import:
 After importing all the data actions, you must publish them to be used in our Architect flows.
 
 ## The architect flows
-
 A Genesys Cloud Architect flow is required to send a customer question (from an incoming message) to Limitless GigCX. This blueprint contains the following flows:
 
 - **Open messaging** - Connect Limitless GigCX to your open messaging channels
@@ -284,7 +282,6 @@ The email flow connects Limitless GigCX to your email channels.
 #### Starting state
 
 The Starting state contains:
-
 - ***A Send Response Block*** - Debugging information confirming you are in the Limitless GigCX demo and the Genesys Message ID
 - ***Switch***:
   - ***Case 1*** - Shows routing straight to an agent rather than the GigCX Crowd
