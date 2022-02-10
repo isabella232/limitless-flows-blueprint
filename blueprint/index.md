@@ -161,7 +161,7 @@ By default, the Loop executes 90 times with a wait time of 8 seconds. These valu
 
 The flow does the following to prepare for entering the loop:
 
-1. Attaches the Limitless GigCX Message ID to the Conversation - This flow signifys a conversation is ‘with Limitless’ GigCX. This association is removed in the flow when the Limitless GigCX portion of the conversation is over.
+1. Attaches the Limitless GigCX Message ID to the Conversation - This flow signifies a conversation is ‘with Limitless’ GigCX. This association is removed in the flow when the Limitless GigCX portion of the conversation is over.
 2. Sets the customer message count to 1, which signify the submitted question, and the value is used within the loop to decide if more customer dialogues must send to Limitless GigCX.
 
 ![Limitless messageID](images/008.png "Limitless messageID") 
