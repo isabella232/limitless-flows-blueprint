@@ -12,13 +12,13 @@ summary: This Genesys Cloud Developer Blueprint provides a simple example of imp
 
 This Genesys Cloud Developer Blueprint provides a simple example of implementing [Limitless GigCX](https://www.limitlesstech.com/genesys/ "Goes to the GigCX with Limitless and Genesys page") on Genesys Cloud to manage and deliver expert customer support.
 
-![Limitless GigCX workflow](images/001.png "Limitless GigCX workflow")
-
 ## Solution components
 
-**Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The expert is available 24/7, in any language, to deliver support and lower cost. You can find out more about Limitless GigCX at: <https://www.limitlesstech.com/>
+1. **Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The expert is available 24/7, in any language, to deliver support and lower cost. You can find out more about Limitless GigCX at: <https://www.limitlesstech.com/>
 
-**Architect Flows** - A flow in Architect, a drag and drop web-based design tool, dictates how Genesys Cloud handles inbound or outbound interactions. 
+2. **Genesys Cloud Architect Flows** - A drag and drop web-based design tool that dictates how Genesys Cloud handles inbound or outbound interactions. 
+
+3. **Genesys Cloud Data Actions** - A Genesys Cloud integration capability that allows Genesys Architect Flows to integrate third-party REST APIs and/or AWS Lambdas . 
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ The following diagram shows a high-level representation of the implementation.
 
 ![Headless integration flow](images/001.png "Headless integration flow") 
 
-You can learn more about Limitless GigCX and Genesys at: [https://www.limitlesstech.com/genesys/](https://www.limitlesstech.com/genesys/ "Goes to the GigCX with Limitless and Genesys page").
+You can learn more about Limitless GigCX and Genesys [here](https://www.limitlesstech.com/genesys/ "Goes to the GigCX with Limitless and Genesys page").
 
 # Implementation steps
 
@@ -43,7 +43,7 @@ Without connectivity to Limitless GigCX SmartCrowd, you cannot bring Experts int
 
 Steps to connectivity:
 
-1. To request a demo, contact Limitless GigCX: [https://www.limitlesstech.com/request-a-demo/](https://www.limitlesstech.com/request-a-demo/ "Goes to the See Limitless GigCX in action page").
+1. To request a demo, contact [Limitless GigCX](https://www.limitlesstech.com/request-a-demo/ "Goes to the See Limitless GigCX in action page").
 
 2. The Limitless GigCX team provides the following:
    - Your API Key (x-api-key)
@@ -58,24 +58,24 @@ We use Data Actions to call the Limitless GigCX APIs. There are 12 data actions 
 
 Now we import each of the 12 data actions. For more information see, [Import or export a data action for integrations](https://help.mypurecloud.c}om/?p=161024 "Goes to the Import or export a data action for integrations article") in the Genesys Cloud Resource Center.
 
-Each data action connects to an API - some are Genesys Cloud APIs, and some are Limitless GigCX Web Services, as shown in the table below. For more information see, [https://developer.genesys.cloud/api/](https://developer.genesys.cloud/api/ "Goes to the APIs page").
+Each data action connects to an API - some are Genesys Cloud APIs, and some are Limitless GigCX Web Services, as shown in the table below.
 
 The following are data actions to import:
 
-|**Data Action Name**|**Integration**|**Genesys API**|**Used In**|**Purpose**|
-| :-: | :-: | :-: | :-: | :-: |
-|Limitless - Get Contact By Phone from Genesys v1|Genesys Cloud|[/api/v2/externalcontacts/contacts?q=${input.phone}]([GET /api/v2/externalcontacts/contacts](https://developer.genesys.cloud/api/rest/v2/externalcontacts/#get-api-v2-externalcontacts-contacts))|- Open messaging flow|Looks up the customer in the Genesys External Contacts using the phone number. Returns the customers' first name and initial of their last name (this is used for personalization of responses) Note: In your contact center, you may use a CRM for this information and use your CRM API to get the customer details)|
-|Limitless - Get Message Id Count from Genesys v1|Genesys Cloud|[/api/v2/conversations/messages/${input.conversationId}]([Limitless Messaging Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Messaging%20Flow%20v2.0.0_v26-0.i3InboundMessage))|- Open messaging flow - Chat flow|Counts the number of messages authored by the customer for this Genesys Conversation. Used in logic to send more customer dialogues to Limitless|
-|Limitless - Get Last N Message Ids from Genesys v1|Genesys Cloud|[/api/v2/conversations/messages/${input.conversationId}][/api/v2/conversations/messages/${input.conversationId}]([Limitless Messaging Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Messaging%20Flow%20v2.0.0_v26-0.i3InboundMessage))|- Open messaging flow|Returns the last N message ids of messages authored by the customer on this Genesys Conversation. Used in logic to send other customer dialogues to Limitless|
-|Limitless - Get Last Message from Genesys v1|Genesys Cloud|[/api/v2/conversations/messages/${input.conversationId}/messages/${input.messageId}][/api/v2/conversations/messages/${input.conversationId}]([Limitless Messaging Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Messaging%20Flow%20v2.0.0_v26-0.i3InboundMessage))| - Open messaging flow|Returns the customer authored dialogue (e.g. message body) for a specific message so it can be sent to Limitless|
-|Limitless - Get Message Ids From Chat Conv By Id from Genesys v1|Genesys Cloud|[/api/v2/conversations/chats/${input.conversationId}/messages?sortOrder=${input.sortOrder}]([Limitless Chat Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Chat%20Flow%20V2.0.0_v21-0.i3InboundChatFlow))|- Chat flow|Get any new message ids from the chat, oldest first|
-|Limitless - Get Message Ids From Chat Conv By Id And MsgId from Genesys v1|Genesys Cloud|[/api/v2/conversations/chats/${input.conversationId}/messages?after=${input.messageId}&sortOrder=${input.sortOrder}]([Limitless Chat Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Chat%20Flow%20V2.0.0_v21-0.i3InboundChatFlow))| - Chat flow|Also searches with messageId/api/v2/conversations/chats/${input.conversationId}/messages?sortOrder=${input.sortOrder}vs./api/v2/conversations/chats/${input.conversationId}/messages?after=${input.messageId}&sortOrder=${input.sortOrder}
-|Limitless - Push Question to SmartCrowd v1|Web Services|N/A| - Open messaging flow - Email flow- Chat flow |Submits the question/conversation to Limitless.|
+|**Data Action Name**|**Integration**|**Used In**|**Purpose**|
+| :- | :- | :- | :- |
+|Limitless - Get Contact By Phone from Genesys v1|Genesys Cloud|Open messaging flow|Looks up the customer in the Genesys External Contacts using the phone number. Returns the customers' first name and initial of their last name (this is used for personalization of responses) Note: In your contact center, you may use a CRM for this information and use your CRM API to get the customer details)|
+|[Limitless - Get Message Id Count from Genesys v1](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/blob/dd23fb8308a08a528078bbc13c1020131c90b76c/Architect%20Flows/Limitless%20Messaging%20Flow%20v2.0.0_v26-0.i3InboundMessage)|Genesys Cloud| Open messaging flow - Chat flow|Counts the number of messages authored by the customer for this Genesys Conversation. Used in logic to send more customer dialogues to Limitless|
+|Limitless - Get Last N Message Ids from Genesys v1|Genesys Cloud|Open messaging flow|Returns the last N message ids of messages authored by the customer on this Genesys Conversation. Used in logic to send other customer dialogues to Limitless|
+|Limitless - Get Last Message from Genesys v1|Genesys Cloud|Open messaging flow|Returns the customer authored dialogue (e.g. message body) for a specific message so it can be sent to Limitless|
+|Limitless - Get Message Ids From Chat Conv By Id from Genesys v1|Genesys Cloud|Chat flow|Get any new message ids from the chat, oldest first|
+|Limitless - Get Message Ids From Chat Conv By Id And MsgId from Genesys v1|Genesys Cloud|Chat flow|Also searches with messageId/api/v2/conversations/chats/${input.conversationId}/messages?sortOrder=${input.sortOrder}vs./api/v2/conversations/chats/${input.conversationId}/messages?after=${input.messageId}&sortOrder=${input.sortOrder}
+|Limitless - Push Question to SmartCrowd v1|Web Services|Open messaging flow - Email flow- Chat flow |Submits the question/conversation to Limitless.|
 |Limitless - Submit FollowUp Dialogue to SmartCrowd v1|Web Services|N/A| - Open messaging flow - Email Flow - Chat flow |Submits new customer authored dialogues to Limitless.|
-|Limitless - Return from SmartCrowd v1|Web Services|N/A| - Open messaging flow - Chat flow |Tells SmartCrowd to close its message lifecycle as Genesys has introduced an Agent into the conversation.|
-|Limitless - Get Full Event from SmartCrowd v1|Web Services|N/A| - Open messaging flow - Email flow - Chat flow</p>|Retrieves expert dialogue and SmartCrowd Message Status events from the Limitless event queue.|
-|Limitless Send Email Reply v1|Web Services|N/A|- Email flow|Send the expert response via email using an SMTP server.|
-|Limitless - Shorten Link v1|Web Services|N/A| - Open messaging flow - Email flow - Chat flow |Used to call out to a 3rd Party url shortener to reduce the size of the CSAT link. The example url here is for Bitly: [Short links, big results](https://bitly.com/ "Goes to the Short links, big results page") and to use that service you need a Bitly account and then to input your account specific token into the header. You can also replace Bitly with your url shortner of choice.|
+|Limitless - Return from SmartCrowd v1|Web Services|Open messaging flow - Chat flow |Tells SmartCrowd to close its message lifecycle as Genesys has introduced an Agent into the conversation.|
+|Limitless - Get Full Event from SmartCrowd v1|Web Services|Open messaging flow - Email flow - Chat flow</p>|Retrieves expert dialogue and SmartCrowd Message Status events from the Limitless event queue.|
+|Limitless Send Email Reply v1|Web Services|Email flow|Send the expert response via email using an SMTP server.|
+|Limitless - Shorten Link v1|Web Services|Open messaging flow - Email flow - Chat flow |Used to call out to a 3rd Party url shortener to reduce the size of the CSAT link. The example url here is for Bitly: [Short links, big results](https://bitly.com/ "Goes to the Short links, big results page") and to use that service you need a Bitly account and then to input your account specific token into the header. You can also replace Bitly with your url shortner of choice.|
 After importing all the data actions, you must publish them to be used in our Architect flows.
 
 ## The architect flows
