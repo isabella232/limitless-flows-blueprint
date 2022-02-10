@@ -1,6 +1,6 @@
 ---
 title: Crowdsource your contact center using Limitless GigCX
-author: Writer McWriterface
+author: writer.mcWriterface
 indextype: blueprint
 icon: blueprint
 image: images/001.png
@@ -28,7 +28,6 @@ This Genesys Cloud Developer Blueprint provides a simple example of implementing
 
 ### Specialized knowledge
 
-- Compatible with web chat v1.1 & web chat v2
 - Experience with Limitless GigCX
 - Experience designing Architect flows
 - Experience importing and/or designing Genesys Cloud Data Actions
@@ -372,7 +371,7 @@ The use of the Limitless GigCX flows has no impact on Cloud Analytics or reporti
 
 ## Additional resources
 
-- [https://developer.genesys.cloud/api/](https://developer.genesys.cloud/api/ "Goes to the APIs page") in the Genesys Cloud Developer Center
-- [https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint "Goes to the Limitless blueprint repository") in Github
+- [APIs Developer Center page](https://developer.genesys.cloud/api/ "Goes to the APIs page") in the Genesys Cloud Developer Center
+- [Limitless GigCX blueprint repository](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint "Goes to the Limitless blueprint repository") in Github
 - [Import or export a data action for integrations](https://help.mypurecloud.com/?p=161024 "Goes to the Import or export a data action for integrations article") in the Genesys Cloud Resource Center
 - [Import or export a flow](https://help.mypurecloud.com/?p=2730 "Goes to the Import or export a flow article") in the Genesys Cloud Resource Center
