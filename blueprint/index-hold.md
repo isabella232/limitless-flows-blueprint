@@ -1,11 +1,11 @@
 ---
 title: Crowdsource your contact center using Limitless GigCX
-author: writer.mcWriterface
+author: marc.whitwam
 indextype: blueprint
 icon: blueprint
 image: images/001.png
 category: 5
-summary: This Genesys Cloud Developer Blueprint provides a simple example of implementing Limitless GigCX on Genesys Cloud [https://www.limitlesstech.com/genesys/](https://www.limitlesstech.com/genesys/ "Goes to the GigCX with Limitless and Genesys page") to manage and deliver expert customer support.
+summary: This Genesys Cloud Developer Blueprint provides a simple example of implementing Limitless GigCX on Genesys Cloud to manage and deliver expert customer support.
 ---
 
 ## Implementing a support platform that delivers exceptional customer experience
@@ -14,7 +14,7 @@ This Genesys Cloud Developer Blueprint provides a simple example of implementing
 
 ## Solution components
 
-1. **Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The expert is available 24/7, in any language, to deliver support and lower cost. You can find out more about Limitless GigCX at: <https://www.limitlesstech.com/>
+1. **Limitless GigCX** - A product your organization can use to quickly build a qualifier crowd of exports to resolve customer support tickets. The expert is available 24/7, in any language, to deliver support and lower cost. You can find out more about Limitless GigCX [here](https://www.limitlesstech.com/).
 
 2. **Genesys Cloud Architect Flows** - A drag and drop web-based design tool that dictates how Genesys Cloud handles inbound or outbound interactions. 
 
@@ -87,7 +87,7 @@ A Genesys Cloud Architect flow is required to send a customer question (from an 
 - [Limitless Email Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/tree/main/blueprint/ArchitectFlows/Limitless%20Email%20Flow%20v2.0.0_v34-0.i3InboundEmailFlow "Goes to the Limitless Email Flow") - Connect Limitless GigCX to your email channels 
 - [Limitless Messaging Flow](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint/tree/main/blueprint/ArchitectFlows/Limitless%20Messaging%20Flow%20v2.0.0_v26-0.i3InboundMessage "Goes to the Limitless Messaging Flow") - Connect Limitless GigCX to your open messaging channels
 
-You can import these flows from the "Architect Flows" GUI. For more information see, [Import or export a flow](https://help.mypurecloud.com/?p=2730 "Goes to the the Import or export a flow article") in the Genesys Cloud Resource Center. Architect flows can also be import by using the [Archy](/devapps/archy/ "Goes to the Welcome to Archy page")) command line tool.
+You can import these flows from the "Architect Flows" GUI. For more information see, [Import or export a flow](https://help.mypurecloud.com/?p=2730 "Goes to the the Import or export a flow article") in the Genesys Cloud Resource Center. Architect flows can also be import by using the [Archy](/devapps/archy/ "Goes to the Welcome to Archy page") command line tool.
 
 ### Flow variables
 
@@ -368,7 +368,8 @@ The use of the Limitless GigCX flows has no impact on Cloud Analytics or reporti
 
 ## Additional resources
 
-- [APIs Developer Center page](https://developer.genesys.cloud/api/ "Goes to the APIs page") in the Genesys Cloud Developer Center
+- [APIs Developer Center page](/api/ "Goes to the APIs page") in the Genesys Cloud Developer Center
 - [Limitless GigCX blueprint repository](https://github.com/GenesysCloudBlueprints/limitless-flows-blueprint "Goes to the Limitless blueprint repository") in Github
 - [Import or export a data action for integrations](https://help.mypurecloud.com/?p=161024 "Goes to the Import or export a data action for integrations article") in the Genesys Cloud Resource Center
 - [Import or export a flow](https://help.mypurecloud.com/?p=2730 "Goes to the Import or export a flow article") in the Genesys Cloud Resource Center
+- [Import or export a flow using Archy]() in the Genesys Cloud Developer Center.
